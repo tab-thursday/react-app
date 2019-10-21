@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import {Link} from 'react-router-dom';
 
 
 const Login = props => {
@@ -13,9 +13,10 @@ const Login = props => {
     });
   };
   const handleSubmit = event => {
+    const baseURL = 'https://tabless-be.herokuapp.com/api/auth'
     event.preventDefault();
     axios
-      .post("https://mypartyplanner.herokuapp.com/api/auth/login", logini)
+      .post(`${baseURL}/login`, logini)
       .then(response => {
         localStorage.setItem("token", response.data.token);
         props.history.push("/tabs");

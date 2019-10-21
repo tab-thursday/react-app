@@ -7,13 +7,13 @@ function Register(props) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const baseURL = "https://mypartyplanner.herokuapp.com/api";
+    const baseURL = "https://tabless-be.herokuapp.com/api/auth";
     axios
-      .post(`${baseURL}/auth/register`, { username: username, password })
+      .post(`${baseURL}/register`, { username: username, password: password })
       .then(res => {
         console.log(res);
         localStorage.setItem("token", res.data.token);
-        props.history.push("/");
+        props.history.push("/tabs");
       })
       .catch(err => {
         console.log(err);
