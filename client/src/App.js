@@ -1,15 +1,24 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
+import PrivateRoute from './components/PrivateRoute';
+import Tabs from './components/Tabs';
+import Login from './components/Login';
+import Register from './components/Register';
+import {Route, Switch, Link} from 'react-router-dom';
 import './App.css';
 
 function App() {
   return (
-    <Router>
+    
     <div className="App">
-      <h1>Login Page will start here</h1>
       
+      <PrivateRoute exact path  = '/tabs' component = {Tabs}/>
+      <Route exact path  = '/' component = {Login}/>
+      <Route
+              exact
+              path="/register"
+              render={props => <Register {...props} />}
+            />{" "}
     </div>
-    </Router>
   );
 }
 
