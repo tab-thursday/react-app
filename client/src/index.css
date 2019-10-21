@@ -11,3 +11,29 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+input.name, input.password {
+  /* width:20%; */
+}
+
+button {
+  display: flex;
+  justify-content: center;
+  width: 53px;
+  padding: 3px 5px 3px 5px;
+}
+
+.formwrapper {
+  display: flex;
+  justify-content: center;
+}
+.buttonwrapper {
+  display: flex;
+  justify-content: center;
+}
