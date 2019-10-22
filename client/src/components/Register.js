@@ -1,23 +1,18 @@
 import React, { useState } from "react";
 import axios from "axios";
+import {connect} from 'react-redux';
+import {register} from './actions/index';
 
 function Register(props) {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [loginz, setLoginZ] = useState({username: '', password: '' });
+  
 
   const handleSubmit = e => {
     e.preventDefault();
-    const baseURL = "https://tabless-be.herokuapp.com/api/auth";
-    axios
-      .post(`${baseURL}/register`, { username: username, password: password })
-      .then(res => {
-        console.log(res);
-        localStorage.setItem("token", res.data.token);
-        props.history.push("/tabs");
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    register(loginz)
+    props.history.push("/tabs");
+   setLoginZ({username: '', password: '' });
+   
   };
 
   return (
@@ -26,17 +21,17 @@ function Register(props) {
       <form className="formregister" onSubmit={handleSubmit}>
         <p className="regtitle">Register</p>
         <input className='inputregister'
-          value={username}
+          value={loginz.username}
           name="username"
           type="text"
-          onChange={e => setUsername(e.target.value)}
+          onChange={e => setLoginZ({...loginz, username: e.target.value})}
           placeholder="username"
         />
         <input className='inputregister'
-          value={password}
+          value={loginz.password}
           name="password"
           type="password"
-          onChange={e => setPassword(e.target.value)}
+          onChange={e => setLoginZ({...loginz, password: e.target.value})}
           placeholder="password"
         />
         <div className = 'buttonwrapper'>
@@ -49,4 +44,9 @@ function Register(props) {
     </div>
   );
 }
-export default Register;
+
+
+const mapStateToProps = (state) => {
+  return {...state}
+}
+export default connect(mapStateToProps, {register})(Register);

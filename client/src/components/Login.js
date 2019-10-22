@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {login} from './actions/index';
 
 
 const Login = props => {
@@ -13,15 +15,9 @@ const Login = props => {
     });
   };
   const handleSubmit = event => {
-    const baseURL = 'https://tabless-be.herokuapp.com/api/auth'
     event.preventDefault();
-    axios
-      .post(`${baseURL}/login`, logini)
-      .then(response => {
-        localStorage.setItem("token", response.data.token);
-        props.history.push("/tabs");
-      })
-      .catch(err => console.log("error in handlesSub", err.response));
+    props.login(logini);
+    props.history.push("/tabs");
     setLogini({ username: "", password: "" });
   };
   return (
@@ -63,4 +59,9 @@ const Login = props => {
   );
 };
 
-export default Login;
+
+const mapStateToProps = (state) => {
+  return {...state}
+}
+
+export default connect(mapStateToProps, {login})(Login);
