@@ -1,11 +1,11 @@
 import React from 'react'
-import Footer from "./Footer"
+import TabsFooter from "./TabsFooter"
 
 const Tabs = () => {
   return (
     <div>
       <h1>Tabs page</h1>
-      <Footer/>
+      <TabsFooter/>
     </div>
   )
 }

@@ -17,7 +17,7 @@ a {
 }
 `
 
-const Footer = () => {
+const TabsFooter = () => {
   return (
     <div>
       <FooterDiv>
@@ -28,4 +28,4 @@ const Footer = () => {
   )
 }
 
-export default Footer;
+export default TabsFooter;
