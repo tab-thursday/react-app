@@ -106,7 +106,7 @@ const Tabs = ({id,loadTabs,tabs,addTabs,logout,history,deleteTab,updateTab}) => 
   }
   
   useEffect(() => {
-   loadTabs(id)
+  loadTabs(id)
   }, [loadTabs,id])
 
   useEffect(() => {
