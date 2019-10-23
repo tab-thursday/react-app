@@ -46,7 +46,7 @@ transition: transform 0.2s ease-in;
 border-radius: 50px;
 background: gray;
 color: white;
-width: 300px;
+width: 400px;
 height: 375px;
 max-height: 350px;
 display: flex;
@@ -54,6 +54,7 @@ flex-direction: column;
 align-items: center;
 justify-content: space-between;
 margin-bottom: 30px;
+padding-top: 30px;
 cursor: pointer;
 box-shadow: 0px 6px 10px -2px black;
 &:hover {
@@ -61,9 +62,15 @@ box-shadow: 0px 6px 10px -2px black;
     background: lightgray;
     color: black;
 `;
-const Ps = styled.p`
+const Ps = styled.a`
 font-weight: 600;
 font-family: 'Noto Serif TC', serif;
+`;
+
+const ButtonWrap = styled.div`
+display:flex;
+justify-content: center;
+flex-direction: row;
 `;
 
 
@@ -131,13 +138,14 @@ const Tabs = ({id,loadTabs,tabs,addTabs,logout,history,deleteTab,updateTab}) => 
       {tabs.map(tab => {
         return (
         <CardWrap>
-          <Card>
-        <Ps>{tab.url}</Ps>
+        <Card>
+        <Ps href= {tab.url}>{tab.url}</Ps>
         <Ps>{tab.name}</Ps>
         <Ps>{tab.notes}</Ps>
+        <ButtonWrap>
         <Button onClick={() => deleteTab(id, tab.id)}>Delete Tab</Button>
         <Button onClick={() => {handleEdit(tab)} }>Edit Tab</Button>
-        {/* <p>{tab.category}</p> */}
+        </ButtonWrap>
         </Card>
         </CardWrap>
         )
