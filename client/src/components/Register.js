@@ -94,7 +94,6 @@ function Register(props) {
     props.register(loginz)
     // props.history.push("/tabs");
   //  setLoginZ({username: '', password: '' });
-   
   };
 
   return (
